@@ -16,8 +16,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView movieImage;
         TextView title;
         TextView year;
@@ -41,7 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
 
@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(MyAdapter.MyViewHolder holder, final int position) {
 
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
@@ -57,6 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         myViewHolder.year.setText(movies.get(position).getYear());
         myViewHolder.director.setText(movies.get(position).getDirector());
         myViewHolder.actor.setText(movies.get(position).getActors());
+        bitmap = null;
 
 
         Thread mThread = new Thread(){
