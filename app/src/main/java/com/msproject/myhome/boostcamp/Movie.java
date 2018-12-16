@@ -10,7 +10,7 @@ public class Movie {
     String link;
 
     public Movie(String title, double grade, String director, String year, String actors, String imageURL, String link){
-        this.title = title;
+        this.title = subTitle(title);
         this.grade = grade;
         this.director = director;
         this.year = year;
@@ -77,5 +77,12 @@ public class Movie {
 
     public String toString(){
         return "제목: " + title + " 평점: " + grade + " 감독: " + director + " 개봉년: " + year + " 배우: " + actors + " 이미지: " + imageURL + " 링크: " + link;
+    }
+
+    public String subTitle(String str){
+        str = str.replaceAll("<b>", "");
+        str = str.replaceAll("</b>", "");
+        str = str.replaceAll("amp;", "");
+        return str;
     }
 }
